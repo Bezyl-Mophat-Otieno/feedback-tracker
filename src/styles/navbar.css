@@ -1,0 +1,13 @@
+.link {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+.link:hover {
+  background-color: #f1f1f1;
+  color: #fe5f55;
+}

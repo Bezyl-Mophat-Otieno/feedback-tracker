@@ -1,0 +1,16 @@
+.feedback {
+  width: 30vw;
+  height: 25vh;
+  padding: 30px;
+  background-color: aliceblue;
+}
+textarea {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  border: 2px solid white;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 2vh;
+  font-family: "Montserrat", sans-serif;
+}

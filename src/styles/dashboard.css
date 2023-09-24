@@ -1,0 +1,86 @@
+.dash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 95vw;
+  height: 90vh;
+  margin-top: 2vh;
+}
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  height: 90vh;
+  width: 20vw;
+}
+
+.feedcontainer {
+  border: 1px solid grey;
+  width: 70vw;
+  height: 90vh;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow-y: scroll;
+}
+.links-container {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
+}
+.btn-links {
+  width: 15vw;
+  height: 8vh;
+  border: none;
+}
+.btn-links:hover {
+  background-color: #ff7b6b;
+  transition: 0.5s;
+}
+
+.msg-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  height: 30vh;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.msg-btn {
+  width: 25vw;
+  height: 8vh;
+  background-color: #fe5f55;
+  border-radius: 15px;
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+}
+.msg-btn:hover {
+  background-color: #ff7b6b;
+  transition: 0.5s;
+}
+
+.msg-btn-serviced {
+  width: 25vw;
+  height: 8vh;
+  background-color: #329b24;
+  border-radius: 15px;
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+}
