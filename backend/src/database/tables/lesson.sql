@@ -1,0 +1,6 @@
+CREATE TABLE lessonTable (
+    lessonId VARCHAR(250) PRIMARY KEY,
+    lessontTitle VARCHAR(250) NOT NULL,
+    createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    
+);
