@@ -4,11 +4,11 @@ function SafeArea() {
   return (
     <>
       <div className="areaContainer">
-        <div className="brand">
+        <div className="brand-area">
           <img src="images/safe.jpg" alt="brandImg" />
         </div>
+        <button className="btn">Authenticate</button>
       </div>
-      <Button action="Authenticate" />
     </>
   );
 }

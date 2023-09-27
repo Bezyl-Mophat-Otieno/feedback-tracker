@@ -1,5 +1,5 @@
 CREATE TABLE ratingTable(
-    lessonId VARCHAR(255),
+    lessonId VARCHAR(250),
     rating INT,
     FOREIGN KEY (lessonId) REFERENCES lessonTable(lessonId)
 )

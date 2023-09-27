@@ -10,3 +10,7 @@
   background-color: #ff7b6b;
   transition: 0.5s;
 }
+.disabled {
+  background-color: #ff7b6b;
+  pointer-events: none;
+}

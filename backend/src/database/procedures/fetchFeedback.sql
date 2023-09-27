@@ -1,0 +1,5 @@
+CREATE OR ALTER PROCEDURE fetchFeedback
+AS
+BEGIN
+	SELECT * FROM feedbackTable
+END;

@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE getFeedback
+@id VARCHAR(250)
+AS
+BEGIN
+	SELECT * FROM feedbackTable WHERE id = @id
+END;

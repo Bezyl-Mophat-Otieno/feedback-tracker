@@ -1,0 +1,6 @@
+CREATE OR ALTER PROCEDURE deleteFeedback
+@id VARCHAR(250)
+AS
+BEGIN
+    DELETE FROM feedbackTable WHERE id = @id;
+END;

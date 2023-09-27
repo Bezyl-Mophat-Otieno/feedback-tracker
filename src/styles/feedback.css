@@ -14,3 +14,20 @@ textarea {
   margin-bottom: 2vh;
   font-family: "Montserrat", sans-serif;
 }
+
+.btn {
+  width: 30vw;
+  height: 8vh;
+  background-color: #fe5f55;
+  border-radius: 5px;
+  color: aliceblue;
+  border: none;
+}
+.btn:hover {
+  background-color: #ff7b6b;
+  transition: 0.5s;
+}
+.disabled {
+  background-color: #ff7b6b;
+  pointer-events: none;
+}

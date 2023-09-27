@@ -1,0 +1,4 @@
+CREATE OR ALTER PROCEDURE fetchLessons 
+AS BEGIN
+SELECT * FROM lessonTable;
+END;
