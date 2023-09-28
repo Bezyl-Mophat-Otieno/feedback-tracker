@@ -15,27 +15,34 @@ function Rating({
   setRated,
   setSuccess,
   setTitle,
+  lesson,
 }: props) {
-  const addRating = async (input: number) => {
+  const addRating = async (input: number, id: string) => {
     const response = await axios.post(
       "http://localhost:5000/api/v1/rating/add",
       {
         rating: input,
-        lessonId: "eeb8224c-f1fc-4ed1-b92a-969112247860",
+        lessonId: id,
       }
     );
     const data = await response.data;
     console.log(data);
   };
 
+  type Variable = {
+    input: number;
+    id: string;
+  };
+
   const ratingMutation = useMutation({
-    mutationFn: (input: number) => addRating(input),
+    mutationFn: (variables: Variable) =>
+      addRating(variables.input, variables.id),
   });
   const [rating, setRating] = useState<number | null>(null);
   const [hover, setHOver] = useState<number | null>(null);
 
-  const handleClick = (ratingValue: number) => {
-    ratingMutation.mutate(ratingValue);
+  const handleClick = (ratingValue: number, id: string) => {
+    ratingMutation.mutate({ input: ratingValue, id: id });
     setSuccess(true);
     setMessage("Thank you for your Rating");
     setType("success");
@@ -51,7 +58,7 @@ function Rating({
           <label key={i}>
             <input type="radio" name="rating" value={ratingValue} />
             <FaStar
-              onClick={() => handleClick(ratingValue)}
+              onClick={() => handleClick(ratingValue, lesson.lessonId)}
               className="star"
               color={ratingValue <= (rating! | hover!) ? "#FE5F55" : "gray"}
               size={70}

@@ -12,6 +12,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import SafeArea from "./pages/SafeArea";
+import userStore from "./zustand/userStore";
 
 const Root = () => {
   return (
@@ -24,13 +25,18 @@ const Root = () => {
   );
 };
 
+const isAuth = userStore.getState().user.isAuthenticated;
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<Home />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/safe" element={<SafeArea />}></Route>
-      <Route path="/admin" loader={dataLoader} element={<Dashboard />}></Route>
+      <Route
+        path="/admin"
+        loader={dataLoader}
+        element={isAuth ? <Dashboard /> : <SafeArea />}
+      ></Route>
     </Route>
   )
 );

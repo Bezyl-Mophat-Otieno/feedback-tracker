@@ -9,3 +9,7 @@ input[type="radio"] {
 h1 {
   color: #484d6d;
 }
+
+.container h1 {
+  text-align: center;
+}

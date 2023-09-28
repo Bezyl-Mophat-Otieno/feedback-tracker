@@ -1,5 +1,8 @@
 import "../styles/login.css";
 import LoginForm from "../components/LoginForm";
+type props = {
+  [key: string]: any;
+};
 function Login() {
   return (
     <div className="main">

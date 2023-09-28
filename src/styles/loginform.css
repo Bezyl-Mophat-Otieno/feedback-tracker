@@ -19,13 +19,17 @@
 .loginContainer form input {
   width: 30vw;
   height: 6vh;
-  border: 2px solid grey;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 10px;
   background-color: white;
   padding: 10px;
   color: black;
   font-size: 1.2rem;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  transition: all 0.5s;
+}
+.loginContainer form input:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .btn {

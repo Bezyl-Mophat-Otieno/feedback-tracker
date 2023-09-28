@@ -20,6 +20,7 @@ function Dashboard() {
             <button className="btn-links">Statistics</button>
             <button className="btn-links">Feedback</button>
             <button className="btn-links">Ratings</button>
+            <button className="btn-links">Lessons</button>
           </div>
         </div>
       </div>

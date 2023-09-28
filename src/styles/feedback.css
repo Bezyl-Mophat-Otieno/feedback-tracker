@@ -1,3 +1,10 @@
+.container {
+  text-align: center;
+}
+.container h1 {
+  text-align: center;
+}
+
 .feedback {
   width: 30vw;
   height: 25vh;

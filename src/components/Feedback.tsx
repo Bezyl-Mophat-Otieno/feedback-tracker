@@ -14,20 +14,42 @@ function FeedBack({
   setTitle,
   setSuccess,
   success,
+  lesson,
+  setError,
 }: props) {
-  const addFeedback = async (input: string) => {
+  const handleClick = (input: string, id: string) => {
+    if (input.trim() === "") {
+      setSuccess(true);
+      setMessage("Please enter your feedback");
+      setTitle("Invalid Entry");
+      setType("warning");
+      return;
+    }
+    feedbackMutation.mutate({ input: input, id: id });
+    feedRef.current.value = "";
+    return;
+  };
+
+  const addFeedback = async (input: string, id: string) => {
     try {
       const response = await axios.post(
         "http://localhost:5000/api/v1/feedback/add",
         {
           feedback: input,
-          lessonId: "eeb8224c-f1fc-4ed1-b92a-969112247860",
+          lessonId: id,
         }
       );
       console.log(response.data);
+      setSuccess(true);
+      setMessage("Thank you for your feedback");
+      setTitle("Success");
+      setType("success");
       feedRef.current.value = "";
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      setError(true);
+      setMessage(error.response.data.message);
+      setTitle("Error");
+      setType("error");
     }
   };
   success &&
@@ -37,9 +59,14 @@ function FeedBack({
 
   const feedRef: any = useRef();
 
+  type Variable = {
+    input: string;
+    id: string;
+  };
+
   const feedbackMutation = useMutation({
-    mutationFn: (input: string) => {
-      return addFeedback(input);
+    mutationFn: (variables: Variable) => {
+      return addFeedback(variables.input, variables.id);
     },
     onSettled: () => {
       setSuccess(true);
@@ -79,16 +106,7 @@ function FeedBack({
           className="btn"
           onClick={(e) => {
             e.preventDefault();
-            if (feedRef.current.value === "") {
-              setSuccess(true);
-              setMessage("Please enter your feedback");
-              setTitle("Invalid Entry");
-              setType("warning");
-              return;
-            }
-            feedbackMutation.mutate(feedRef.current.value);
-            feedRef.current.value = "";
-            return;
+            return handleClick(feedRef.current.value, lesson.lessonId);
           }}
         >
           Submit

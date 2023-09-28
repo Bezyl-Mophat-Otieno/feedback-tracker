@@ -1,0 +1,4 @@
+CREATE OR ALTER PROCEDURE currentLesson
+AS BEGIN
+SELECT TOP 1 * FROM lessonTable ORDER BY createdAt DESC;
+END;
