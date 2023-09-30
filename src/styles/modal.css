@@ -1,0 +1,56 @@
+/* Modal Container */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 1000; /* Ensure the modal appears above other content */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff; /* Background color of the modal */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 40vw; /* Adjust the width as needed */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 37vh;
+  right: 30vw;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Input Field */
+input[type="text"] {
+  width: 30vw;
+  height: 6vh;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  color: black;
+  font-size: 1.2rem;
+  border: 1px solid rgb(128, 128, 128, 0.2);
+  transition: all 0.5s;
+  color: black;
+}
+input:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

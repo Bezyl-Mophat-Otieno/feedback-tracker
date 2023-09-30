@@ -13,9 +13,15 @@ const getFeedback = async (req: Request, res: Response) => {
         data: result.recordset,
       });
     } else {
+      console.log(result);
+
       return res
-        .status(400)
-        .json({ message: "Feedback not fetched", status: "failed" });
+        .status(200)
+        .json({
+          message: "Feedback not found",
+          data: result.recordset,
+          status: "failed",
+        });
     }
   } catch (error: any) {
     return res.status(500).json({ message: error.message, status: "failed" });

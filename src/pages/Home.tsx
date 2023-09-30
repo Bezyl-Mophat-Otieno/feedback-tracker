@@ -10,8 +10,11 @@ type Lesson = {
   [key: string]: any;
 };
 
-function Home() {
-  const [tittle, setTittle] = useState<string>("");
+type props = {
+  [key: string]: any;
+};
+
+function Home({ setIsAuth }: props) {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [rated, setRated] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -19,6 +22,7 @@ function Home() {
   const [message, setMessage] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [type, setType] = useState<string>("");
+  const [allDone, setAllDone] = useState(false);
   const fetchLesson = async () => {
     try {
       const response = await axios.get(
@@ -63,10 +67,19 @@ function Home() {
             message={message}
           />
         )}
-
         <Lesson lesson={lesson} />
 
-        {!success && !rated && (
+        {allDone && (
+          <div className="thank-container">
+            <img src="images/thankyou.jpg" alt="brandImg" />
+            <h1 className="thankText">
+              Every piece of feedback you provide is a stepping stone on our
+              path to excellence. Thank you for your invaluable input.
+            </h1>
+          </div>
+        )}
+
+        {!success && allDone == false && !rated && (
           <Rating
             setMessage={setMessage}
             setType={setType}
@@ -76,7 +89,7 @@ function Home() {
             lesson={lesson}
           />
         )}
-        {rated && (
+        {rated && allDone == false && (
           <FeedBack
             setSuccess={setSuccess}
             setTitle={setTitle}
@@ -85,6 +98,7 @@ function Home() {
             success={success}
             lesson={lesson}
             setError={setError}
+            setAllDone={setAllDone}
           />
         )}
       </div>

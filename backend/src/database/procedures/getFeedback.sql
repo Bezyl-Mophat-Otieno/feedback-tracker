@@ -2,5 +2,5 @@ CREATE OR ALTER PROCEDURE getFeedback
 @id VARCHAR(250)
 AS
 BEGIN
-	SELECT * FROM feedbackTable WHERE id = @id
+	SELECT * FROM feedbackTable WHERE lessonId = @id
 END;

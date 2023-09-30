@@ -7,17 +7,17 @@ const getAvgRating = async (req: Request, res: Response) => {
 
     const result = await DB.executeProcedure("avgRating", { lessonId: id });
     if (result.recordset.length > 0) {
-      const rating = result.recordset;
+      const rating: any = result.recordset;
       return res.status(201).json({
         message: "Average Rating Returned",
-        rating: rating,
+        rating: rating[0].averageRating,
         status: "success",
       });
     } else {
       console.log(result);
       return res
-        .status(400)
-        .json({ message: "Failed To Return Average Rating", status: "failed" });
+        .status(200)
+        .json({ message: "Lesson Not Rated", rating: 0, status: "failed" });
     }
   } catch (error: any) {
     return res.status(500).json({ message: error.message });

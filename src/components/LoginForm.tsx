@@ -5,7 +5,20 @@ import axios from "axios";
 import Alert from "./Alert";
 import userStore from "../zustand/userStore";
 import { useNavigate } from "react-router-dom";
-function LoginForm() {
+import { useEffect } from "react";
+
+type props = {
+  [key: string]: any;
+};
+
+function LoginForm({ setIsAuth, isAuth }: props) {
+  useEffect(() => {
+    if (isAuth === true) {
+      setTimeout(() => {
+        navigate("/admin");
+      }, 2000);
+    }
+  }, [isAuth]);
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -31,11 +44,7 @@ function LoginForm() {
     setTitle("Success");
     if (data.message === "Login successful") {
       userStore.getState().login(data.token);
-      setTimeout(() => {
-        console.log(userStore.getState().user);
-
-        navigate("/admin");
-      }, 3000);
+      setIsAuth(userStore.getState().user.isAuthenticated);
     }
     return data;
   };

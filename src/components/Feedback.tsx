@@ -16,6 +16,7 @@ function FeedBack({
   success,
   lesson,
   setError,
+  setAllDone,
 }: props) {
   const handleClick = (input: string, id: string) => {
     if (input.trim() === "") {
@@ -75,6 +76,7 @@ function FeedBack({
       setType("success");
       setTimeout(() => {
         setSuccess(false);
+        setAllDone(true);
       }, 3000);
     },
     onError: (error: any) => {

@@ -20,9 +20,26 @@ const userStore = create<UserStore>()(
     (set) => {
       return {
         user,
-        logout: () => set({ user: { isAuthenticated: false, token: null } }),
+        logout: () =>
+          set((state) => {
+            return {
+              user: {
+                ...state.user,
+                isAuthenticated: false,
+                token: null,
+              },
+            };
+          }),
         login: (token: string) =>
-          set({ user: { isAuthenticated: true, token } }),
+          set((state) => {
+            return {
+              user: {
+                ...state.user,
+                isAuthenticated: true,
+                token,
+              },
+            };
+          }),
       };
     },
     {

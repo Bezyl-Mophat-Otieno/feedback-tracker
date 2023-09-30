@@ -1,0 +1,36 @@
+.msg-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  height: 30vh;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.msg-btn {
+  width: 25vw;
+  height: 8vh;
+  background-color: #fe5f55;
+  border-radius: 15px;
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+}
+.msg-btn:hover {
+  background-color: #ff7b6b;
+  transition: 0.5s;
+}
+
+.msg-btn-serviced {
+  width: 25vw;
+  height: 8vh;
+  background-color: #329b24;
+  border-radius: 15px;
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+}

@@ -18,6 +18,10 @@
   height: 90vh;
   width: 20vw;
 }
+.sidenav img {
+  width: 10vw;
+  height: 10vh;
+}
 
 .feedcontainer {
   border: 1px solid grey;
@@ -25,6 +29,8 @@
   height: 90vh;
   color: black;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 20px;
   overflow-y: scroll;
@@ -46,41 +52,4 @@
 .btn-links:hover {
   background-color: #ff7b6b;
   transition: 0.5s;
-}
-
-.msg-container {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30vw;
-  height: 30vh;
-  border: 2px solid black;
-  border-radius: 25px;
-  padding: 20px;
-}
-
-.msg-btn {
-  width: 25vw;
-  height: 8vh;
-  background-color: #fe5f55;
-  border-radius: 15px;
-  color: aliceblue;
-  border: none;
-  font-size: 1.2rem;
-}
-.msg-btn:hover {
-  background-color: #ff7b6b;
-  transition: 0.5s;
-}
-
-.msg-btn-serviced {
-  width: 25vw;
-  height: 8vh;
-  background-color: #329b24;
-  border-radius: 15px;
-  color: aliceblue;
-  border: none;
-  font-size: 1.2rem;
 }

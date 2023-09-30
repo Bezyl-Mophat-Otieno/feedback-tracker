@@ -1,0 +1,46 @@
+.lesson-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  height: 30vh;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.lesson-btn {
+  margin-top: 2vh;
+  width: 25vw;
+  height: 8vh;
+  border-radius: 15px;
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.lesson-btn:hover {
+  background-color: #ff7b6b;
+  transition: 0.5s;
+}
+
+.lesson-btn-serviced {
+  width: 25vw;
+  height: 8vh;
+  background-color: #329b24;
+  border-radius: 15px;
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.lesson-container .rating-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

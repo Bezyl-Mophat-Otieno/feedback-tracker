@@ -15,12 +15,32 @@
 .brand img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.thank-container {
+  width: 45vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.thank-container img {
+  width: 40vw;
+  height: 40vh;
+  object-fit: contain;
+}
+.thankText {
+  padding: 30px;
+  font-family: "Life Savers", cursive !important;
+  font-size: 2rem !important;
+}
+
 .action {
   width: 45vw;
   height: 90vh;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   align-items: center;

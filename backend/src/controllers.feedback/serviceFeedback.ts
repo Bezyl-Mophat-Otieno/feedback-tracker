@@ -16,6 +16,7 @@ const serviceFeedback = async (req: Request, res: Response) => {
         .json({ message: "Feedback not serviced", status: "failed" });
     }
   } catch (error: any) {
+    console.log(error.message);
     return res.status(500).json({ message: error.message, status: "failed" });
   }
 };

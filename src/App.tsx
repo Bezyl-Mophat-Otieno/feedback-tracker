@@ -1,6 +1,6 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
-import Dashboard, { dataLoader } from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import SafeArea from "./pages/SafeArea";
 import userStore from "./zustand/userStore";
+import { useEffect, useState } from "react";
 
 const Root = () => {
   return (
@@ -25,23 +26,34 @@ const Root = () => {
   );
 };
 
-const isAuth = userStore.getState().user.isAuthenticated;
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Root />}>
-      <Route index element={<Home />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/safe" element={<SafeArea />}></Route>
-      <Route
-        path="/admin"
-        loader={dataLoader}
-        element={isAuth ? <Dashboard /> : <SafeArea />}
-      ></Route>
-    </Route>
-  )
-);
-
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    setIsAuth(userStore.getState().user.isAuthenticated);
+  }, []);
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route index element={<Home setIsAuth={setIsAuth} />}></Route>
+        <Route
+          path="/login"
+          element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />}
+        ></Route>
+        <Route
+          path="/admin"
+          element={
+            isAuth ? (
+              <Dashboard setIsAuth={setIsAuth} />
+            ) : (
+              <SafeArea setIsAuth={setIsAuth} />
+            )
+          }
+        ></Route>
+      </Route>
+    )
+  );
   return <RouterProvider router={router}></RouterProvider>;
 }
 
