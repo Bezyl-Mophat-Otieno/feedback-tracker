@@ -21,7 +21,6 @@ function LoginForm({ setIsAuth, isAuth }: props) {
   }, [isAuth]);
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
   const [message, setMessage] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [type, setType] = useState<string>("");
@@ -73,7 +72,7 @@ function LoginForm({ setIsAuth, isAuth }: props) {
   };
   return (
     <div className="loginContainer">
-      {(success || error) && (
+      {success && (
         <Alert
           setSuccess={setSuccess}
           type={type}

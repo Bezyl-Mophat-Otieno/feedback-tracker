@@ -10,11 +10,7 @@ type Lesson = {
   [key: string]: any;
 };
 
-type props = {
-  [key: string]: any;
-};
-
-function Home({ setIsAuth }: props) {
+function Home() {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [rated, setRated] = useState(false);
   const [success, setSuccess] = useState(false);

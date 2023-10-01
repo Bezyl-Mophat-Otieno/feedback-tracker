@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import { MdOutlineExitToApp } from "react-icons/md";
 import userStore from "../zustand/userStore";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function NavBar() {
-  const navigate = useNavigate();
   const [isAuth, setIsAuth] = useState(
     userStore.getState().user.isAuthenticated
   );
@@ -29,7 +27,7 @@ function NavBar() {
         Home
       </Link>
 
-      <h1 className="thankText">SESSION MANAGEMENT SYSTEM</h1>
+      <h1 className="thankText">RateMyLecture.</h1>
       {isAuth && (
         <button className="btn-nav" onClick={handleClick}>
           <MdOutlineExitToApp /> Logout

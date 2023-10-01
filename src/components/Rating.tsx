@@ -1,4 +1,3 @@
-import React from "react";
 import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 import "../styles/rating.css";
@@ -38,7 +37,6 @@ function Rating({
     mutationFn: (variables: Variable) =>
       addRating(variables.input, variables.id),
   });
-  const [rating, setRating] = useState<number | null>(null);
   const [hover, setHOver] = useState<number | null>(null);
 
   const handleClick = (ratingValue: number, id: string) => {
@@ -49,18 +47,21 @@ function Rating({
     setTitle("Rating");
     setRated(true);
   };
+  const stars = ["star", "star", "star", "star", "star"];
+
   return (
     <div className="container">
       <h1>Rating</h1>
-      {[...Array(5)].map((star, i) => {
+      {stars.map((star, i) => {
         const ratingValue = i + 1;
+
         return (
           <label key={i}>
             <input type="radio" name="rating" value={ratingValue} />
             <FaStar
               onClick={() => handleClick(ratingValue, lesson.lessonId)}
-              className="star"
-              color={ratingValue <= (rating! | hover!) ? "#FE5F55" : "gray"}
+              className={star}
+              color={ratingValue <= hover! ? "#FE5F55" : "gray"}
               size={70}
               onMouseEnter={() => setHOver(ratingValue)}
               onMouseLeave={() => setHOver(null)}

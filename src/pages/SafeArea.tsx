@@ -1,9 +1,7 @@
 import "../styles/saferea.css";
 import { useNavigate } from "react-router-dom";
-type props = {
-  [key: string]: any;
-};
-function SafeArea({ setIsAuth }: props) {
+
+function SafeArea() {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/login");

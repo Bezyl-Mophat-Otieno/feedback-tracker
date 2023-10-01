@@ -14,6 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 // Routings
+app.get("/", (req, res) => {
+  res.send("Hello Welcome! to the v1  of the api");
+});
 app.use("/api/v1/lesson", lessonRoutes);
 app.use("/api/v1/rating", ratingRouter);
 app.use("/api/v1/feedback", feedbackRouter);

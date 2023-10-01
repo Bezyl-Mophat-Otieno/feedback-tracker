@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import "../styles/feedback.css";
 import { useMutation } from "@tanstack/react-query";
-import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 type props = {

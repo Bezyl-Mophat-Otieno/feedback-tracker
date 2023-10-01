@@ -5,6 +5,7 @@ import getFeedback from "../controllers.feedback/getFeedback";
 import deleteFeedback from "../controllers.feedback/deleteFeedback";
 import serviceFeedback from "../controllers.feedback/serviceFeedback";
 import updateFeedback from "../controllers.feedback/updateFeedback";
+import fetchCurrentFeedback from "../controllers.feedback/fetchCurrentFeedback";
 
 const feedbackRouter = Router();
 
@@ -14,5 +15,6 @@ feedbackRouter.put("/update", updateFeedback);
 feedbackRouter.get("/get/:id", getFeedback);
 feedbackRouter.delete("/delete", deleteFeedback);
 feedbackRouter.put("/service", serviceFeedback);
+feedbackRouter.get("/current/:id", fetchCurrentFeedback);
 
 export default feedbackRouter;

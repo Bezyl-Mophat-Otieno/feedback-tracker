@@ -5,7 +5,7 @@ type ButtonProps = {
   [key: string]: any;
 };
 
-function Button({ action, clickable, setClickable }: ButtonProps) {
+function Button({ action }: ButtonProps) {
   const navigate = useNavigate();
 
   const eventTrigger = (action: string) => {

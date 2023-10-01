@@ -12,10 +12,7 @@ type Lesson = {
   [key: string]: any;
 };
 
-type props = {
-  [key: string]: any;
-};
-function Dashboard({ setIsAuth }: props) {
+function Dashboard() {
   const [feedbackData, setfeedbackData] = useState<any>([]);
   const [lessonData, setlessonData] = useState<any>([]);
   const [success, setSuccess] = useState(false);
@@ -24,6 +21,7 @@ function Dashboard({ setIsAuth }: props) {
   const [type, setType] = useState<string>("");
   const [button, setButton] = useState<string | null>(null);
   const [currentLesson, setCurrentLesson] = useState<Lesson | null>(null);
+  const [currentFeedback, setcurrentFeedback] = useState<any>([]);
   const [showModal, setShowModal] = useState(false);
 
   const closeModal = () => {
@@ -51,6 +49,7 @@ function Dashboard({ setIsAuth }: props) {
   currentLessonQuery.isLoading && console.log("Loading...");
   currentLessonQuery.isError && console.log("Error");
   currentLessonQuery.isSuccess && console.log("Success");
+
   useEffect(() => {
     if (currentLessonQuery.data) {
       setCurrentLesson(currentLessonQuery.data);
@@ -61,6 +60,14 @@ function Dashboard({ setIsAuth }: props) {
     const lessonId = currentLesson!.lessonId;
     const response = await axios.get(
       `http://localhost:5000/api/v1/feedback/get/${lessonId}`
+    );
+    const data = await response.data.data;
+    return data;
+  };
+  const fetchCurrentFeedback = async () => {
+    const lessonId = currentLesson!.lessonId;
+    const response = await axios.get(
+      `http://localhost:5000/api/v1/feedback/current/${lessonId}`
     );
     const data = await response.data.data;
     return data;
@@ -78,9 +85,17 @@ function Dashboard({ setIsAuth }: props) {
   const feedbackQuery = useQuery({
     queryKey: ["feedback"],
     enabled:
-      (button === "feedback" || button === null) && currentLesson !== null,
+      button === ("feedback" || button === null) && currentLesson !== null,
     queryFn: fetchFeedback,
   });
+  const currentFeedbackQuery = useQuery({
+    queryKey: ["Newfeedback"],
+    enabled: button === "notifications" && currentLesson !== null,
+    queryFn: fetchCurrentFeedback,
+  });
+  currentFeedbackQuery.isLoading && console.log("Loading...");
+  currentFeedbackQuery.isError && console.log("Error");
+  currentFeedbackQuery.isSuccess && console.log("Success");
 
   const lessonQuery = useQuery({
     queryKey: ["lessons"],
@@ -95,7 +110,11 @@ function Dashboard({ setIsAuth }: props) {
     if (lessonQuery.data) {
       setlessonData(lessonQuery.data);
     }
-  }, [feedbackQuery.data, lessonQuery.data]);
+    if (currentFeedbackQuery.data) {
+      setcurrentFeedback(currentFeedbackQuery.data);
+      console.log(currentFeedback);
+    }
+  }, [feedbackQuery.data, lessonQuery.data, currentFeedbackQuery.data]);
 
   return (
     <div className="dash-container">
@@ -148,7 +167,26 @@ function Dashboard({ setIsAuth }: props) {
         </div>
       </div>
       <div className="feedcontainer">
-        {button == "notifications" && <h1>House Under Construction ...</h1>}
+        {button == null && (
+          <div className="thank-container">
+            <img src="images/admin.jpg" alt="brandImg" />
+            <h1 className="thankText">Welcome to Admin's Dashboard</h1>
+          </div>
+        )}
+        {(button == "notifications" || button == null) &&
+          currentFeedback.map((feedback: any, index: number) => {
+            console.log(feedback);
+            return (
+              <Feed
+                feedback={feedback}
+                setTitle={setTitle}
+                setType={setType}
+                setSuccess={setSuccess}
+                setMessage={setMessage}
+                key={index}
+              />
+            );
+          })}
         {button == "ratings" && <h1>House Under Construction ...</h1>}
         {button == "statistics" && <h1>House Under Construction ...</h1>}
         {showModal && (
@@ -170,7 +208,7 @@ function Dashboard({ setIsAuth }: props) {
             setSuccess={setSuccess}
           />
         )}
-        {(button == "feedback" || button == null) &&
+        {button == "feedback" &&
           feedbackData.map((feedback: any, index: number) => {
             return (
               <Feed

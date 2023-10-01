@@ -36,20 +36,14 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route index element={<Home setIsAuth={setIsAuth} />}></Route>
+        <Route index element={<Home />}></Route>
         <Route
           path="/login"
-          element={<Login isAuth={isAuth} setIsAuth={setIsAuth} />}
+          element={<Login setIsAuth={setIsAuth} isAuth={isAuth} />}
         ></Route>
         <Route
           path="/admin"
-          element={
-            isAuth ? (
-              <Dashboard setIsAuth={setIsAuth} />
-            ) : (
-              <SafeArea setIsAuth={setIsAuth} />
-            )
-          }
+          element={isAuth ? <Dashboard /> : <SafeArea />}
         ></Route>
       </Route>
     )

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/feed.css";
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
@@ -46,12 +46,7 @@ function Feed({ feedback, setMessage, setSuccess, setTitle, setType }: props) {
   return (
     <div>
       <div className="msg-container">
-        <p className="msg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-          suscipit reiciendis ea esse nemo labore ipsum dignissimos atque
-          deleniti necessitatibus, numquam voluptates voluptatum illum,
-          praesentium pariatur? Saepe commodi ut necessitatibus!
-        </p>
+        <p className="msg">{feedback.feedback}</p>
         <button
           className={serviced ? "msg-btn-serviced" : "msg-btn"}
           onClick={() => serviceMutation.mutate({ id: feedback.id })}

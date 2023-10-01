@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/modal.css"; // Import your CSS styles for the modal
 import { useRef } from "react";
 import { useMutation } from "@tanstack/react-query";

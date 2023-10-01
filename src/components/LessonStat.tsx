@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "../styles/lessonstat.css";
 import { FaStar } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 type props = {
   [key: string]: any;
@@ -54,18 +53,20 @@ function LessonStat({ lesson, setfeedbackData, setButton }: props) {
     }
   }, [ratingQuery.data]);
 
+  const stars = ["star", "star", "star", "star", "star"];
+
   return (
     <div className="lesson-container" key={lesson.id}>
       <p className="msg">{lesson.lessonTittle}</p>
       <div className="rating-container">
-        {[...Array(5)].map((star, i) => {
+        {stars.map((star: string, i) => {
           const ratingValue = i + 1;
           console.log(ratingValue, "Rating Value");
           console.log(rating, "Rating");
           return (
             <div className="rating-container" key={i}>
               <FaStar
-                className="star"
+                className={star}
                 color={ratingValue <= rating! ? "#FE5F55" : "gray"}
                 size={70}
               />

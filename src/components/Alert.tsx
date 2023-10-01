@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/alert.css";
 import { FaCheckCircle, FaExclamationCircle, FaTimes } from "react-icons/fa";
 // Import the desired icons
