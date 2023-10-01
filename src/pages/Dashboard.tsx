@@ -7,6 +7,7 @@ import Feed from "../components/Feed";
 import LessonStat from "../components/LessonStat";
 import Lesson from "../components/Lesson";
 import Modal from "../components/Modal";
+import RenderChart from "../components/Chart";
 
 type Lesson = {
   [key: string]: any;
@@ -148,7 +149,6 @@ function Dashboard({ setIsAuth }: props) {
         </div>
       </div>
       <div className="feedcontainer">
-        {button == "notifications" && <h1>House Under Construction ...</h1>}
         {button == "ratings" && <h1>House Under Construction ...</h1>}
         {button == "statistics" && <h1>House Under Construction ...</h1>}
         {showModal && (

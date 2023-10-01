@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { AxisOptions, Chart } from "react-charts";
+import "../styles/chart.css";
 
 type DailyStars = {
   date: Date;
@@ -8,67 +9,58 @@ type DailyStars = {
 
 type Series = {
   label: string;
-
   data: DailyStars[];
 };
 
 const data: Series[] = [
   {
     label: "React Charts",
-
     data: [
       {
         date: new Date(),
-
         stars: 202123,
       },
+      // Add more data points here if needed
     ],
   },
-
   {
     label: "React Query",
-
     data: [
       {
         date: new Date(),
-
         stars: 10234230,
       },
-
-      // ...
+      // Add more data points here if needed
     ],
   },
 ];
 
 function RenderChart() {
   const primaryAxis = useMemo(
-    (): AxisOptions<DailyStars> => ({
-      getValue: (datum) => datum.date,
+    () => ({
+      getValue: (datum: DailyStars) => datum.date,
+      // Add any other primary axis configuration here if needed
     }),
-
     []
   );
 
   const secondaryAxes = useMemo(
-    (): AxisOptions<DailyStars>[] => [
+    () => [
       {
-        getValue: (datum) => datum.stars,
+        getValue: (datum: DailyStars) => datum.stars,
+        // Add any other secondary axis configuration here if needed
       },
     ],
-
     []
   );
+
   return (
-    <div>
-      <Chart
-        options={{
-          data,
-
-          primaryAxis,
-
-          secondaryAxes,
-        }}
-      />
+    <div
+      className="chartContainer
+    "
+      style={{ width: "70%", height: "50%" }}
+    >
+      <Chart options={{ data, primaryAxis, secondaryAxes }} />
     </div>
   );
 }
