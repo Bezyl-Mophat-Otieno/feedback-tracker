@@ -7,6 +7,8 @@ import Feed from "../components/Feed";
 import LessonStat from "../components/LessonStat";
 import Lesson from "../components/Lesson";
 import Modal from "../components/Modal";
+import RenderChart from "../components/Chart";
+import Chart from "../components/Chart";
 
 type Lesson = {
   [key: string]: any;
@@ -46,9 +48,9 @@ function Dashboard() {
     queryKey: ["lesson"],
     queryFn: fetchCurrentLesson,
   });
-  currentLessonQuery.isLoading && console.log("Loading...");
-  currentLessonQuery.isError && console.log("Error");
-  currentLessonQuery.isSuccess && console.log("Success");
+  // currentLessonQuery.isLoading && console.log("Loading...");
+  // currentLessonQuery.isError && console.log("Error");
+  // currentLessonQuery.isSuccess && console.log("Success");
 
   useEffect(() => {
     if (currentLessonQuery.data) {
@@ -78,7 +80,6 @@ function Dashboard() {
       "http://localhost:5000/api/v1/lesson/fetch"
     );
     const data = await response.data.lessons;
-    // console.log(data);
     return data;
   };
 
@@ -93,9 +94,9 @@ function Dashboard() {
     enabled: button === "notifications" && currentLesson !== null,
     queryFn: fetchCurrentFeedback,
   });
-  currentFeedbackQuery.isLoading && console.log("Loading...");
-  currentFeedbackQuery.isError && console.log("Error");
-  currentFeedbackQuery.isSuccess && console.log("Success");
+  // currentFeedbackQuery.isLoading && console.log("Loading...");
+  // currentFeedbackQuery.isError && console.log("Error");
+  // currentFeedbackQuery.isSuccess && console.log("Success");
 
   const lessonQuery = useQuery({
     queryKey: ["lessons"],
@@ -112,7 +113,7 @@ function Dashboard() {
     }
     if (currentFeedbackQuery.data) {
       setcurrentFeedback(currentFeedbackQuery.data);
-      console.log(currentFeedback);
+      // console.log(currentFeedback);
     }
   }, [feedbackQuery.data, lessonQuery.data, currentFeedbackQuery.data]);
 
@@ -167,6 +168,14 @@ function Dashboard() {
         </div>
       </div>
       <div className="feedcontainer">
+        {success && (
+          <Alert
+            type={type}
+            title={title}
+            message={message}
+            setSuccess={setSuccess}
+          />
+        )}
         {button == null && (
           <div className="thank-container">
             <img src="images/admin.jpg" alt="brandImg" />
@@ -174,21 +183,34 @@ function Dashboard() {
           </div>
         )}
         {(button == "notifications" || button == null) &&
-          currentFeedback.map((feedback: any, index: number) => {
-            console.log(feedback);
-            return (
-              <Feed
-                feedback={feedback}
-                setTitle={setTitle}
-                setType={setType}
-                setSuccess={setSuccess}
-                setMessage={setMessage}
-                key={index}
-              />
-            );
-          })}
-        {button == "ratings" && <h1>House Under Construction ...</h1>}
-        {button == "statistics" && <h1>House Under Construction ...</h1>}
+          (currentFeedback.length !== 0 || undefined ? (
+            currentFeedback.map((feedback: any, index: number) => {
+              // console.log(feedback);
+              return (
+                <Feed
+                  feedback={feedback}
+                  setTitle={setTitle}
+                  setType={setType}
+                  setSuccess={setSuccess}
+                  setMessage={setMessage}
+                  key={index}
+                />
+              );
+            })
+          ) : (
+            <div className="thank-container">
+              <img src="images/done.jpg" alt="brandImg" />
+              <h1 className="thankText">All Concerns Handled</h1>
+            </div>
+          ))}
+
+        {button == "ratings" && (
+          <div className="thank-container">
+            <img src="images/construction.jpg" alt="brandImg" />
+            <h1 className="thankText">We will be up and runing soon</h1>
+          </div>
+        )}
+        {button == "statistics" ? <Chart /> : <Chart />}
         {showModal && (
           <Modal
             closeModal={closeModal}
@@ -200,14 +222,7 @@ function Dashboard() {
           />
         )}
         {/* <Lesson lesson={currentLesson} /> */}
-        {success && (
-          <Alert
-            type={type}
-            title={title}
-            message={message}
-            setSuccess={setSuccess}
-          />
-        )}
+
         {button == "feedback" &&
           feedbackData.map((feedback: any, index: number) => {
             return (

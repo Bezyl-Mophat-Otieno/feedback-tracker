@@ -7,3 +7,6 @@ CREATE TABLE feedbackTable (
     FOREIGN KEY (lessonId) REFERENCES lessonTable(lessonId)
 )
 
+
+-- Drop the table
+DROP TABLE feedbackTable

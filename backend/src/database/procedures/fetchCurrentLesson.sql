@@ -1,4 +1,5 @@
 CREATE OR ALTER PROCEDURE currentLesson
 AS BEGIN
-SELECT TOP 1 * FROM lessonTable ORDER BY createdAt DESC;
+  SELECT TOP 1 * FROM lessonTable
+  ORDER BY CONVERT(DATE, createdAt) DESC;
 END;

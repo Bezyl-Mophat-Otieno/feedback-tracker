@@ -51,7 +51,7 @@ function Feed({ feedback, setMessage, setSuccess, setTitle, setType }: props) {
           className={serviced ? "msg-btn-serviced" : "msg-btn"}
           onClick={() => serviceMutation.mutate({ id: feedback.id })}
         >
-          {serviced ? "Serviced" : "Service"}
+          {serviced ? "Issue Resolved" : "Mark as Resolved"}
         </button>
       </div>
     </div>

@@ -1,4 +1,4 @@
 CREATE OR ALTER PROCEDURE fetchLessons 
 AS BEGIN
-SELECT * FROM lessonTable;
+SELECT * FROM lessonTable ORDER BY createdAt DESC;
 END;

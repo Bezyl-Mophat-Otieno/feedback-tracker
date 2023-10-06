@@ -61,8 +61,7 @@ function LessonStat({ lesson, setfeedbackData, setButton }: props) {
       <div className="rating-container">
         {stars.map((star: string, i) => {
           const ratingValue = i + 1;
-          console.log(ratingValue, "Rating Value");
-          console.log(rating, "Rating");
+
           return (
             <div className="rating-container" key={i}>
               <FaStar
