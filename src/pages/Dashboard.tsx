@@ -7,7 +7,6 @@ import Feed from "../components/Feed";
 import LessonStat from "../components/LessonStat";
 import Lesson from "../components/Lesson";
 import Modal from "../components/Modal";
-import RenderChart from "../components/Chart";
 import Chart from "../components/Chart";
 
 type Lesson = {
@@ -145,9 +144,7 @@ function Dashboard() {
             >
               Feedback
             </button>
-            <button className="btn-links" onClick={() => setButton("ratings")}>
-              Ratings
-            </button>
+
             <button
               className="btn-links"
               onClick={() => {
@@ -210,7 +207,7 @@ function Dashboard() {
             <h1 className="thankText">We will be up and runing soon</h1>
           </div>
         )}
-        {button == "statistics" ? <Chart /> : <Chart />}
+        {button == "statistics" && <Chart />}
         {showModal && (
           <Modal
             closeModal={closeModal}

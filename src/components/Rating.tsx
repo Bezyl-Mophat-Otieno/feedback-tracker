@@ -25,7 +25,7 @@ function Rating({
       }
     );
     const data = await response.data;
-    console.log(data);
+    // console.log(data);
   };
 
   type Variable = {

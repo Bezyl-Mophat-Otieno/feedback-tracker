@@ -39,7 +39,7 @@ function FeedBack({
           lessonId: id,
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       setSuccess(true);
       setMessage("Thank you for your feedback");
       setTitle("Success");

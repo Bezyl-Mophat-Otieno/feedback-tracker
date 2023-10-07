@@ -39,15 +39,15 @@ function Home() {
     queryKey: ["lesson"],
     queryFn: fetchLesson,
   });
-  lessonQuery.isLoading && console.log("Loading...");
-  lessonQuery.isError && console.log("Error");
-  lessonQuery.isSuccess && console.log("Success");
+  // lessonQuery.isLoading && console.log("Loading...");
+  // lessonQuery.isError && console.log("Error");
+  // lessonQuery.isSuccess && console.log("Success");
   useEffect(() => {
     if (lessonQuery.data) {
       setLesson(lessonQuery.data);
     }
   }, [lessonQuery.data]);
-  console.log(lesson);
+  // console.log(lesson);
 
   return (
     <div className="main">

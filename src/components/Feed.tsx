@@ -13,7 +13,7 @@ type Variable = {
 function Feed({ feedback, setMessage, setSuccess, setTitle, setType }: props) {
   const [serviced, setServiced] = useState(feedback.serviced);
   const serviceFeedback = async (id: string) => {
-    console.log(id);
+    // console.log(id);
     try {
       const response = await axios.put(
         "http://localhost:5000/api/v1/feedback/service",
@@ -22,7 +22,7 @@ function Feed({ feedback, setMessage, setSuccess, setTitle, setType }: props) {
         }
       );
       const data = response.data;
-      console.log(data);
+      // console.log(data);
       if (data.message == "Feedback serviced successfully") {
         setServiced(true);
         setSuccess(true);

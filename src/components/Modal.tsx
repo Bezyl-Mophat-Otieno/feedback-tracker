@@ -26,7 +26,7 @@ function Modal({ showModal, closeModal }: props) {
     );
 
     const data = response.data;
-    console.log(data);
+    // console.log(data);
     if (data.status == "success") {
       setSuccess(true);
       setMessage("Lesson Added Successfully");
@@ -35,6 +35,7 @@ function Modal({ showModal, closeModal }: props) {
       setTimeout(() => {
         setSuccess(false);
       }, 2000);
+      titleRef.current.value = "";
     } else {
       setSuccess(true);
       setMessage("Something went wrong,lesson not added");

@@ -36,7 +36,7 @@ function LoginForm({ setIsAuth, isAuth }: props) {
       }
     );
     const data = response.data;
-    console.log(data);
+    // console.log(data);
     setSuccess(true);
     setMessage(data.message);
     setType("success");
