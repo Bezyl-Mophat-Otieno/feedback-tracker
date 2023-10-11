@@ -12,6 +12,8 @@ type props = {
 };
 
 function LoginForm({ setIsAuth, isAuth }: props) {
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuth === true) {
       setTimeout(() => {
@@ -19,7 +21,6 @@ function LoginForm({ setIsAuth, isAuth }: props) {
       }, 2000);
     }
   }, [isAuth]);
-  const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState<string>("");
   const [title, setTitle] = useState<string>("");

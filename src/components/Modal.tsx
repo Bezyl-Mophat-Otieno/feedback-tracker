@@ -10,7 +10,7 @@ import axios from "axios";
 type props = {
   [key: string]: any;
 };
-function Modal({ showModal, closeModal }: props) {
+function Modal({ showModal, closeModal, setShowModal }: props) {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState<string>("");
   const [title, setTitle] = useState<string>("");
@@ -59,6 +59,7 @@ function Modal({ showModal, closeModal }: props) {
       setMessage("Lesson Title cannot be empty");
       setTimeout(() => {
         setSuccess(false);
+        setShowModal(false);
       }, 2000);
     } else {
       addLessonMutation.mutate(lessonTitle);

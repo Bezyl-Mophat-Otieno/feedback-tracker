@@ -2,24 +2,27 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import { MdOutlineExitToApp } from "react-icons/md";
 import userStore from "../zustand/userStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function NavBar() {
   const [isAuth, setIsAuth] = useState(
     userStore.getState().user.isAuthenticated
   );
 
-  // useEffect(() => {
-  //   if (isAuth === false) {
-  //     navigate("/");
-  //   }
-  // }, [isAuth]);
-
   const handleClick = () => {
     userStore.getState().logout();
-    setIsAuth(false);
     window.location.reload();
   };
+
+  useEffect(() => {
+    const loginStatus = userStore.getState().user.isAuthenticated;
+    if (loginStatus == false) {
+      setIsAuth(false);
+    }
+    if (loginStatus == true) {
+      setIsAuth(true);
+    }
+  }, [userStore.getState().user.isAuthenticated]);
 
   return (
     <div className="main-nav">

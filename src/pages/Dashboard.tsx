@@ -212,6 +212,7 @@ function Dashboard() {
           <Modal
             closeModal={closeModal}
             showModal={showModal}
+            setShowModal={setShowModal}
             type={type}
             title={title}
             message={message}
